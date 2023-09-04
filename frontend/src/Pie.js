@@ -27,7 +27,7 @@ const Pie = () => {
   return (
     <div style={{textAlign:"center"}}>
    <h1>Pie Chart</h1>  
-   <Chart options={pieData.options} series={pieData.series} type="pie" width={380} /> 
+   {/* <Chart options={pieData.options} series={pieData.series} type="pie" width={380} /> */}
     </div>
   )
 }

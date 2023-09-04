@@ -1,16 +1,16 @@
 const asyncHandler = require("express-async-handler");
 const User = require('../models/userModel');
-const { use } = require("../routes/userRouter");
-const registerUser = asyncHandler(async(req,res)=>{
-    const {name, email , password, pic} = req.body;
+const genarateToken = require('../Config/genarateToken');
+const registerUser = asyncHandler(async (req, res) => {
+    const { name, email, password, pic } = req.body;
 
-    if(!name || !email || !password){
+    if (!name || !email || !password) {
         res.status(400);
         throw new Error("please Enter All the Feilds")
     }
-    const userExists = await User.findOne({email});
+    const userExists = await User.findOne({ email });
 
-    if(userExists){
+    if (userExists) {
         res.status(400);
         throw new Error("User Already exists");
     }
@@ -18,19 +18,39 @@ const registerUser = asyncHandler(async(req,res)=>{
         name,
         email,
         password,
-        pic 
+        pic
     });
 
-    if(user){
+    if (user) {
         res.status(201).json({
-            _id:user._id,
-            name:user.name,
-            email:user.email,
-            pic:user.pic,
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            pic: user.pic,
+            token: genarateToken(user._id)
         })
-    }else{
+    } else {
         throw new Error("Failed to Creat the User")
     }
 });
 
-module.exports = { registerUser }
+const authUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (user && (await user.matchPassword(password))) {
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            pic: user.pic,
+            token: genarateToken(user._id)
+        });
+    } else {
+        res.status(401);
+        throw new Error("Invalid Email Or Password");
+    }
+})
+
+module.exports = { registerUser , authUser }
