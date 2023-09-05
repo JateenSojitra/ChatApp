@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 // const bodyparser = require("body-parser");
 const connectDB= require("./Config/db")
 const userRoutes = require("./routes/userRouter")
+const chatRouters = require("./routes/chatRouters")
 const {erorrHandler , notFound } = require("./middleware/erorrMiddleware")
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json()); // for accept the json Data
 //     extended : true
 // }));
 app.use('/api/user',userRoutes)
+app.use('/api/user',chatRouters)
 
 app.use(notFound)
 app.use(erorrHandler)
