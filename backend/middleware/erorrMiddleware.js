@@ -4,6 +4,7 @@ const notFound = ()=>{
     next(error);
 }
 
+// error Handling Middler Ware
 const erorrHandler = (err , req , res , next)=>{
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     res.status(statusCode);

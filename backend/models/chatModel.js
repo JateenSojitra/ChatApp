@@ -5,6 +5,7 @@
 
 const mongoose = require('mongoose')
 
+// chat Modal
 const chatModel = mongoose.Schema({
     chatName : {
         type : String ,

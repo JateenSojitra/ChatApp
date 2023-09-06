@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// message Modal for Users
 const messageModel = mongoose.Schema({
     sender: {
         type: mongoose.Schema.Types.ObjectId,
@@ -19,5 +20,5 @@ const messageModel = mongoose.Schema({
     }
 );
 
-const Message = mongoose.Model("Message" , messageModel);
+const Message = mongoose.Model("Message", messageModel);
 module.exports = Message;

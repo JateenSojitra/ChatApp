@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const bcrypt = require('bcryptjs')
 
-
+// User Login & sigup Modal authentication
 const userModel = mongoose.Schema({
     name :{
         type : String,

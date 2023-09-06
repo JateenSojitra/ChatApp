@@ -11,12 +11,9 @@ connectDB();
 const app = express();
 
 app.use(express.json()); // for accept the json Data
-// app.use(bodyparser.json());
-// app.use(bodyparser.urlencoded({
-//     extended : true
-// }));
-app.use('/api/user',userRoutes)
-app.use('/api/user',chatRouters)
+
+app.use('/api/user',userRoutes) // User Routes Add
+app.use('/api/user',chatRouters) // char Routes Add
 
 app.use(notFound)
 app.use(erorrHandler)
