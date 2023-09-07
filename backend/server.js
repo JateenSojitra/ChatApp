@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json()); // for accept the json Data
 
 app.use('/api/user',userRoutes) // User Routes Add
-app.use('/api/user',chatRouters) // char Routes Add
+app.use('/api/chat',chatRouters) // char Routes Add
 
 app.use(notFound)
 app.use(erorrHandler)
