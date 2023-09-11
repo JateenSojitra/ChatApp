@@ -1,7 +1,7 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, useToast } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import axios from "axios"
-import { useHistory , useNavigate  } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const SignUp = () => {
     const [name, setName] = useState("")
@@ -12,8 +12,8 @@ const SignUp = () => {
     const [lodings, setLodings] = useState(false);
     const [pic, setPic] = useState(false);
     const toast = useToast()
-    // const history = useHistory()
-    const navigate = useNavigate ()
+
+    const navigate = useNavigate()
 
     const handleClick = () => {
         setShow(!show)

@@ -239,7 +239,7 @@
 
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-import { Route , Routes } from 'react-router-dom'
+import { Route, Routes , BrowserRouter  } from 'react-router-dom'
 import HomeView from './Pages/HomeView'
 import ChatView from './Pages/ChatView'
 import "./App.css"
@@ -249,12 +249,14 @@ const App = () => {
   return (
     <div className='App'>
       <>
-      {/* <WebCamp/> */}
+        {/* <WebCamp/> */}
       </>
-      <Routes>
-      <Route path='/' Component={HomeView}  exact />
-      <Route path='/chat' Component={ChatView} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' Component={HomeView} exact />
+          <Route path='/chat' Component={ChatView} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
